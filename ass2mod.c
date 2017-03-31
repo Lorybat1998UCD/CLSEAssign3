@@ -129,6 +129,10 @@ int main(void)
 	}
 		printf("Proceeding to slot selection\n");
 
+//************************//
+ //***create 7x7 board***//
+//************************//
+
 	struct slots slot[7][7];
 
 	int row, col, j; //for loop counter
@@ -156,6 +160,11 @@ int main(void)
 			else{}
 		}
 	}
+
+	// ********************************************************
+	//***need to implement multiple players to one slot here***
+	// ********************************************************
+
 	for(i = 0;i < num_slots; i++)
 	{
 		slot[i].occupied = 0;	//Need to assign each slot occupied to 0 before filling them
