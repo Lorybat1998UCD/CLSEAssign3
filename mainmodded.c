@@ -8,21 +8,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include "mycrossfireheader.h"
 #include "players.h"
-
-struct slots
-{
-	char slottype[10];
-	int occupied;
-	int defending;	//i made this specifically to track which player was in each occupied slot
-	int adjacent;
-};
+/* declare your struct for a person here */
 
 int main(void) 
 {									 //main function
 //declation of the arrays
-	struct players player[10];
+		struct players player[10];
   	int n;
   	printf("Enter the # of players\n");
   	scanf("%d", &n);
@@ -115,36 +107,25 @@ int main(void)
 	}
 		printf("Proceeding to slot selection\n");
 
-	int column, boardSize;
+	struct slots slot[20];
+	int num_slots;
 
-	//pointer to slot (0,0)
-	struct slot *upLeft;
+	printf("Enter the amount of slots you want to have on the game board: ");//prompt for number of slots for game board.
 
-	//pointer to slot (0,boardSize -1)
-	struct slot *upRight;
+	scanf("%d", &num_slots);
 
-	//pointer to slot (boardSize - 1, 0)
-	struct slot *downLeft;
-
-	//pointer to slot (boardSize - 1, boardSize -1)
-	struct slot *downRight;
-
-	//Obtains the board size from the user input
-	boardSize = getBoardSize();
-
-	//Creates the board
-	createBoard(boardSize,&upLeft, &upRight, &downLeft, &downRight);
-
-//************************//
- //***create 7x7 board***//
-//************************//
-
-	struct slots slot[7][7];
-
-	int row, col, j; //for loop counter
-	for (row=0; row<8; row++)
+	while (num_slots < 2 || num_slots > 20 || num_slots < n)
 	{
-		for (col=0; col<8; col++){	 //for loop to assign the slot types to the various slots (number selected by user)
+		printf("Please choose a value less than 20 and greater than 1. This value must be greater than the number of players you selected above. Try again.\n");
+
+		scanf("%d", &num_slots);
+
+	}
+
+	printf("You have selected %d slots to be on the board.\n\n", num_slots); 
+	int j; //for loop counter
+	for (j=0; j<num_slots; j++)
+	{		 //for loop to assign the slot types to the various slots (number selected by user)
 		int random_R= rand()%3; // random seed for random allocation of slots
 			if (random_R==0)
 			{
@@ -164,13 +145,7 @@ int main(void)
 				printf("Slot %d is type \"HILL\"\n", j+1);
 			}
 			else{}
-		}
 	}
-
-	// ********************************************************
-	//***need to implement multiple players to one slot here***
-	// ********************************************************
-
 	for(i = 0;i < num_slots; i++)
 	{
 		slot[i].occupied = 0;	//Need to assign each slot occupied to 0 before filling them
@@ -570,6 +545,5 @@ int main(void)
 		printf("dexterity = %d\n",player[i].dexterity);
 		printf("luck = %d\n",player[i].luck);
 	}
-
 return 0;
 }
