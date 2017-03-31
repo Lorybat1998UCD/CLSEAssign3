@@ -15,33 +15,24 @@
 int main(){
 
 	int row, column, boardSize;
-
 	//pointer to slot (0,0)
 	struct slot *upLeft;
-
 	//pointer to slot (0,boardSize -1)
 	struct slot *upRight;
-
 	//pointer to slot (boardSize - 1, 0)
 	struct slot *downLeft;
-
 	//pointer to slot (boardSize - 1, boardSize -1)
 	struct slot *downRight;
-
 	//Obtains the board size from the user input
 	boardSize = getBoardSize();
-
 	//Creates the board
 	createBoard(boardSize,&upLeft, &upRight, &downLeft, &downRight);
-
 	/*	Asks the user the row and the column of the slot
 		s/he wants to retrieve from the board.
 		Note that the user needs to know the size of the board to input
 		the correct row and column of the slot s/he wants to retrieve */
 	getDesiredElement(boardSize, &row,&column);
-
 	//Finds the slot
-
 
 	/*If the the required slot is closer to the down-right
 	 * corner of the board the search starts from downRight,

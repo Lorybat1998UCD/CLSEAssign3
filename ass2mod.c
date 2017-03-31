@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "mycrossfireheader.h"
 
 /* declare your struct for a person here */
 struct players
@@ -128,6 +129,26 @@ int main(void)
 		printf("luck = %d\n\n",player[i].luck);
 	}
 		printf("Proceeding to slot selection\n");
+
+	int column, boardSize;
+
+	//pointer to slot (0,0)
+	struct slot *upLeft;
+
+	//pointer to slot (0,boardSize -1)
+	struct slot *upRight;
+
+	//pointer to slot (boardSize - 1, 0)
+	struct slot *downLeft;
+
+	//pointer to slot (boardSize - 1, boardSize -1)
+	struct slot *downRight;
+
+	//Obtains the board size from the user input
+	boardSize = getBoardSize();
+
+	//Creates the board
+	createBoard(boardSize,&upLeft, &upRight, &downLeft, &downRight);
 
 //************************//
  //***create 7x7 board***//
