@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include "players.h"
+#include "header.h"
 /* declare your struct for a person here */
 
 int main(void) 
@@ -41,7 +41,22 @@ int main(void)
 		}	
 		i++;
 	}
-// *** SECTION B ***
+// SECTION B: RANDOM ALLOCATION OF PLAYER CAPABILITIES
+
+	for (i=0; i<n; i++){
+		switch(player[i].type)
+		{
+			case 1: player[i].type = struct human(player[i]);
+				break; 	//HUMAN
+
+			case 2: player[i].type =struct ogre(player[i]);
+				break; //OGRE
+			case 3: player[i].type =struct elf(player[i]);
+				break;//ELF
+			case 4: player[i].type = struct wizard(player[i]);
+				break;//WIZARD
+
+/*// *** SECTION B ***
 	srand ( time(NULL)); 
 	for(i=0;i<n;i++)
 	{
@@ -93,9 +108,9 @@ int main(void)
 			player[i].health = 100;
 		} 
 	}	
-	for(i=0; i<n ;i++)
+	*/	for(i=0; i<n ;i++)
 	{
-			//printing all of the stats by struct
+		//printing all of the stats by struct
 		printf("name: %s\n", player[i].name);
 		printf("class: %s\n",player[i].class);
 		printf("health: %d\n",player[i].health);
@@ -546,4 +561,6 @@ int main(void)
 		printf("luck = %d\n",player[i].luck);
 	}
 return 0;
+}
+}
 }
