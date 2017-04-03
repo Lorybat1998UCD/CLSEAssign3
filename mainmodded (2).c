@@ -46,14 +46,14 @@ int main(void)
 	for (i=0; i<n; i++){
 		switch(player[i].type)
 		{
-			case 1: player[i].type = struct human(player[i]);
+			case 1: player[i].type = human(struct player[i]);
 				break; 	//HUMAN
 
-			case 2: player[i].type =struct ogre(player[i]);
+			case 2: player[i].type = ogre(struct player[i]);
 				break; //OGRE
-			case 3: player[i].type =struct elf(player[i]);
+			case 3: player[i].type = elf(struct player[i]);
 				break;//ELF
-			case 4: player[i].type = struct wizard(player[i]);
+			case 4: player[i].type =  wizard(struct player[i]);
 				break;//WIZARD
 
 /*{ //SECTION B OF CODE MOVED TO HEADER. KEPT ORIGINAL COMMENTED OUT IN HERE

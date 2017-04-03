@@ -32,26 +32,26 @@ struct slots
 
 
 //randomly allocate capabilities while respecting the constraints provided in the line below.
-int rand(void);
+int rand(void){};
+
 	// HUMAN
 
-struct human(struct players player){
-		strcpy(player.class, "Human");
-			//rand(time(NULL)); 
-			player.luck = (rand() %100 +1);
-			player.smartness = (rand() %100 +1);
-			player.strength = (rand() %100 +1);
-			player.dexterity = (rand() %100 +1);
-			player.magic = (rand() %100 +1);
-			player.health = 100;
+struct human (struct players){
+			strcpy(player.class, "Human");
+			while((player.dexterity + player.magic + player.smartness + player.strength + player.luck) > 300);{//rand(time(NULL)); 
+				player.luck = (rand() %100 +1);
+				player.smartness = (rand() %100 +1);
+				player.strength = (rand() %100 +1);
+				player.dexterity = (rand() %100 +1);
+				player.magic = (rand() %100 +1);
+				player.health = 100;
+			}
 		// +1 makes a minimum and then
-		
-		while((player.dexterity + player.magic + player.smartness + player.strength + player.luck) < 300);
-		
+				
 		return player;
-	}
 
-struct ogre(struct players player){
+
+struct ogre(struct players){
 		//OGRE
 		strcpy(player.class, "Ogre");
 			//rand(time(NULL)); 
@@ -64,7 +64,7 @@ struct ogre(struct players player){
 				while((player.luck + player.smartness) >= 50);
 		return player;
 		}
-struct elf(struct players player){
+struct elf(struct players){
 		//ELF
 		strcpy(player.class, "Elf");
 			//rand(time(NULL)); 
@@ -76,7 +76,7 @@ struct elf(struct players player){
 			player.health = 100; 		//50 <= magic so set to 51-100
 		return player;
 		}
-struct wizard(struct players player)	
+struct wizard(struct players){	
 	//WIZARD
 		{
 		strcpy(player.class, "Wizard");
@@ -88,7 +88,8 @@ struct wizard(struct players player)
 			player.magic = (rand() %21 +80);	
 			player.health = 100;
 		return player;
-		} 
+	}
+}
 
 int printplayersummary(struct players player, int n){
 			
