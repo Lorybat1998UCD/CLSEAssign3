@@ -48,7 +48,6 @@ int main(void)
 		{
 			case 1: player[i].type = human(struct player[i]);
 				break; 	//HUMAN
-
 			case 2: player[i].type = ogre(struct player[i]);
 				break; //OGRE
 			case 3: player[i].type = elf(struct player[i]);
@@ -63,7 +62,7 @@ int main(void)
  {
 		if (player[i].type == 1)
 		{ 						//human
-			strcpy(player[i].class, "Human");{
+			strcpy(player[i].classp, "Human");{
 	//randomly allocate capabilities while respecting the constraints provided in the line below.
 			do
 			{
@@ -77,7 +76,7 @@ int main(void)
 		}
 		else if (player[i].type == 2)
 		{ 						//ogre
-			strcpy(player[i].class, "Ogre");
+			strcpy(player[i].classp, "Ogre");
 			player[i].strength = (rand() %21 +80);
 			player[i].dexterity = (rand() %21 +80);
 			player[i].health = 100;
@@ -90,7 +89,7 @@ int main(void)
 		}	
 		else if (player[i].type == 3) //elf
 		{
-			strcpy(player[i].class, "Elf");
+			strcpy(player[i].classp, "Elf");
 			player[i].luck = (rand() %41 +60);
 			player[i].smartness = (rand() %31 +70);
 			player[i].strength = (rand() %51 +1);
@@ -100,7 +99,7 @@ int main(void)
 		}
 		else if (player[i].type == 4) //wizard
 		{
-			strcpy(player[i].class, "Wizard");
+			strcpy(player[i].classp, "Wizard");
 			player[i].smartness = (rand() %11 +90);
 			player[i].dexterity = (rand() %100 +1);
 			player[i].strength = (rand() %20+1);
@@ -113,7 +112,7 @@ int main(void)
 	{
 		//printing all of the stats by struct
 		printf("name: %s\n", player[i].name);
-		printf("class: %s\n",player[i].class);
+		printf("classp: %s\n",player[i].classp);
 		printf("health: %d\n",player[i].health);
 		printf("smartness = %d\n",player[i].smartness);
 		printf("magic = %d\n",player[i].magic);
@@ -556,7 +555,7 @@ int printplayersummary(struct players player, int n); //function to print out pl
 	{
 		printf("\nplayer %d\n",i+1);
 		printf("name: %s\n", player[i].name);
-		printf("class: %s\n",player[i].class);
+		printf("classp: %s\n",player[i].classp);
 		printf("health: %d\n",player[i].health);
 		printf("smartness = %d\n",player[i].smartness);
 		printf("magic = %d\n",player[i].magic);
