@@ -1,14 +1,13 @@
-#ifndef PLAYERS_H
-#define PLAYERS_H
 #include <time.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
+//STRUCTS ARE DECLARED HERE
 struct players
 {
 	char name[200];
-	char class[100];
+	char classp[100];
 	int type; 
     int health;
 	int smartness;
@@ -27,47 +26,31 @@ struct slots
 	int occupied;
 	int defending;	//i made this specifically to track which player was in each occupied slot
 };
-
-#endif
-
-
-//randomly allocate capabilities while respecting the constraints provided in the line below.
+//RANSOM NUMBER GENERATOR USED IS DECLARED HERE
 int rand(void);
-	// HUMAN
 
-struct human(struct players player){
-		strcpy(player.class, "Human");
-			//rand(time(NULL)); 
-			player.luck = (rand() %100 +1);
-			player.smartness = (rand() %100 +1);
-			player.strength = (rand() %100 +1);
-			player.dexterity = (rand() %100 +1);
-			player.magic = (rand() %100 +1);
-			player.health = 100;
-		// +1 makes a minimum and then
-		
-		while((player.dexterity + player.magic + player.smartness + player.strength + player.luck) < 300);
-		
-		return player;
-	}
 
-struct ogre(struct players player){
-		//OGRE
-		strcpy(player.class, "Ogre");
-			//rand(time(NULL)); 
-			player.strength = (rand() %21 +80);
-			player.dexterity = (rand() %21 +80);
-			player.health = 100;
-			player.magic = 0;	
-			player.smartness = (rand() %20 +1);
-			player.luck = (rand() %50 +1);
-				while((player.luck + player.smartness) >= 50);
-		return player;
+//PLAYER STATS ASSIGNATION FUNCTIONS DECLARED BELOW
+//typedef struct players playerstype;
+struct human(players player){ //errors here (ASK)
+	strcpy(player.class, "Human");
+				{
+		while((player.dexterity + player.magic + player.smartness + player.strength + player.luck) > 300)
+			{
+				player.luck = (rand() %100 +1);
+				player.smartness = (rand() %100 +1);
+				player.strength = (rand() %100 +1);
+				player.dexterity = (rand() %100 +1);
+				player.magic = (rand() %100 +1);
+				player.health = 100;
+			// +1 makes a minimum and then
 		}
-struct elf(struct players player){
-		//ELF
-		strcpy(player.class, "Elf");
-			//rand(time(NULL)); 
+		return player;
+}
+}
+struct elf(players player){
+			strcpy(player.class, "Elf");
+
 			player.luck = (rand() %41 +60);
 			player.smartness = (rand() %31 +70);
 			player.strength = (rand() %51 +1);
@@ -75,12 +58,11 @@ struct elf(struct players player){
 			player.magic = (rand() %29 +51);//she said 50 < magic instead of
 			player.health = 100; 		//50 <= magic so set to 51-100
 		return player;
-		}
-struct wizard(struct players player)	
-	//WIZARD
-		{
+	}
+
+struct wizard(players player){
+	
 		strcpy(player.class, "Wizard");
-			//rand(time(NULL)); 
 			player.smartness = (rand() %11 +90);
 			player.dexterity = (rand() %100 +1);
 			player.strength = (rand() %20+1);
@@ -88,7 +70,22 @@ struct wizard(struct players player)
 			player.magic = (rand() %21 +80);	
 			player.health = 100;
 		return player;
-		} 
+	 
+}
+
+struct ogre(players player){
+		strcpy(player.class, "Ogre");
+			player.strength = (rand() %21 +80);
+			player.dexterity = (rand() %21 +80);
+			player.health = 100;
+			player.magic = 0;	
+			
+			while((player.luck + player.smartness) >= 50){
+				player.smartness = (rand() %20 +1);
+				player.luck = (rand() %50 +1);	
+			}
+			return player;
+	}
 
 int printplayersummary(struct players player, int n){
 			
