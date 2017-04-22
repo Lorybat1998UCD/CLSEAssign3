@@ -1,4 +1,6 @@
-Please ignore the folder contained in this repo, it contains a copy of the code files that were put up on moodle.
+Please note the files which compile correctly are those with "ok" at the end. 
+
+ Please ignore the folder contained in this repo, it contains a copy of the code files that were put up on moodle.
 
 *******
 ##### READ ME #####
